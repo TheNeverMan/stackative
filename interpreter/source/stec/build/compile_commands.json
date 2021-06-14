@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/leopoldkucinski/Dokumenty/stec/build",
+  "command": "/usr/bin/c++     -std=c++1y -Wall -Wextra   -o CMakeFiles/stec.dir/main.cpp.o -c /home/leopoldkucinski/Dokumenty/stec/main.cpp",
+  "file": "/home/leopoldkucinski/Dokumenty/stec/main.cpp"
+}
+]
