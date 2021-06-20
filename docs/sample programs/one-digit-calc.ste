@@ -1,0 +1,8 @@
+?|&\%={,,&%!#},\+={,,&+!#},\-={,,&-!#},\*={,,&\*!#},\/={,,&/!#},
+
+
+Comments:
+this program will take input composed of two numbers separated by a math operation character and calculate the result.
+Sample output:
+2+2
+4

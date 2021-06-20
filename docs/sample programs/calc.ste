@@ -1,0 +1,7 @@
+?|1&={&1+&}<{&1+&}>{&1+&}&1={,a}<{,,&10;(,&^&0={0;0;0;},0={&^&,},:),&}a={,,},&\+={,,@[^]&+!#},\-={,,@[^]&-!#},\/={,,@[^]&/!#},\*={,,@[^]&*!#},\%={,,@[^]&%!#},
+
+
+Comment:
+This is much more complicated version of calculator from previous example. This version can calculate on numbers bigger than 9 (more than one digit).
+However due to buggy way how zero strings are treated it can't calculate on numbers like 100,200 or 900. 1000 is fine. I will need to refactor and rewrite this
+calculator.
