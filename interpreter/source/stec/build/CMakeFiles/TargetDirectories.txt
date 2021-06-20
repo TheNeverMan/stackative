@@ -1,3 +1,0 @@
-/home/leopoldkucinski/Dokumenty/stec/build/CMakeFiles/rebuild_cache.dir
-/home/leopoldkucinski/Dokumenty/stec/build/CMakeFiles/edit_cache.dir
-/home/leopoldkucinski/Dokumenty/stec/build/CMakeFiles/stec.dir
