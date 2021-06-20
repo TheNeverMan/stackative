@@ -44,13 +44,14 @@ bool interpret_next_command = true;
 //temp data handler
 string data_handler = "";
 //for curly brackets support
-vector<bool> interpret_if;
+vector<bool> IfStack;
 //bool interpret_code_blocks = false;
 bool is_in_code_block = false;
 //data handler
 StackVariable DataHandler;
 //data handler switch
 bool is_data_handler_in_use = false;
+// copied from StackOverflow
 int parseInt(const std::string &s) {
   std::size_t pos;
   int result = std::stoi(s, &pos);
@@ -59,6 +60,7 @@ int parseInt(const std::string &s) {
   return result;
 }
 void PutOnStack(StackVariable stack) {
+  //todo: fix zero strings
   int var;
   try {
     if (stack.Type != number) {
@@ -249,7 +251,7 @@ int IfCommand() {
   } else {
     temp = false;
   }
-  interpret_if.push_back(temp);
+  IfStack.push_back(temp);
   return 0;
 }
 int SmallerThan() {
@@ -282,7 +284,7 @@ int SmallerThan() {
   } else {
     temp = false;
   }
-  interpret_if.push_back(temp);
+  IfStack.push_back(temp);
   return 0;
 }
 int GreaterThan() {
@@ -316,7 +318,7 @@ int GreaterThan() {
   } else {
     temp = false;
   }
-  interpret_if.push_back(temp);
+  IfStack.push_back(temp);
   return 0;
 }
 int Add() {
@@ -703,14 +705,14 @@ int InterpretCommand(char com) {
   cur_command = com;
   //cout << "Command: " << com << endl;
   /*cout << "Code Block Counter: " << code_block_counter << endl;
-  if (interpret_if.size() != 0) {
-    cout << "If Stack Size: " << interpret_if.size() << endl;
-    cout << "If Stack: " << interpret_if[interpret_if.size() - 1] << endl;
+  if (IfStack.size() != 0) {
+    cout << "If Stack Size: " << IfStack.size() << endl;
+    cout << "If Stack: " << IfStack[IfStack.size() - 1] << endl;
   }*/
   bool bollean = false;
-  if (interpret_if.size() != 0) {
-    int s = interpret_if.size() - 1;
-    bollean = interpret_if[s];
+  if (IfStack.size() != 0) {
+    int s = IfStack.size() - 1;
+    bollean = IfStack[s];
   }
   if (com == '{') {
     code_block_counter++;
@@ -880,8 +882,8 @@ int InterpretCommand(char com) {
     if (code_block_counter < 0) {
       return 11; //lol
     }
-    if (interpret_if.size() != 0) {
-      interpret_if.pop_back();
+    if (IfStack.size() != 0) {
+      IfStack.pop_back();
     }
 
     break;
@@ -899,10 +901,10 @@ int InterpretCommand(char com) {
 end:
 //temorporay i guess
 ifloop:
-  if (interpret_if.size() < code_block_counter) {
+  if (IfStack.size() < code_block_counter) {
     //fix for double false if statements
-    interpret_if.push_back(false);
-    if (interpret_if.size() < code_block_counter) {
+    IfStack.push_back(false);
+    if (IfStack.size() < code_block_counter) {
       goto ifloop;
     }
   }
