@@ -1,5 +1,5 @@
 Stackative-21A
-
+This is a quick start tutorial for Stackative-21A (current version of Stackative).
 In Stackative instructions are interpreted one after another. Every instruction is exacly 1 sign. There are 30 instructions:
 "! ? @ # $ % ^ & * ( ) _ + { } [ ] - = ; : " \ | : ~ ' / . , < >"
 Anything that is not a valid instruction will be put on top of stack, so program:
@@ -18,3 +18,9 @@ will print "Hello World" to screen. Same applies to numbers and both:
 
 1233243!    -> "1233243" printed on screen
 H3ll0!      -> "H3ll0" printed on screen
+
+";" is used as a separator, so program:
+
+Hello;World!
+
+Will put "Hello" on stack, then "World" and then print "World" on screen.
